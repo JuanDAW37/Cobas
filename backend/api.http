@@ -1,17 +1,39 @@
 ##Recuperar todos los clientes
-GET http://localhost:3000/cursos HTTP/1.1
+GET http://localhost:3000/api/cursos HTTP/1.1
 
-###Crear un cliente por id fija
-POST http://localhost:3000/cursos/programacion HTTP/1.1
+###Crear un curso por id fija
+POST http://localhost:3000/api/cursos/programacion HTTP/1.1
 Content-Type: application/json
 
 {
-    "titulo":"Aprende NodeJs"
+    "id": 4,
+    "titulo": "Aprende programacion",
+    "lenguaje":"JavaScript",
+    "vistas": 0,
+    "nivel": "Intermedio"
 }
-###Modificar un cliente por id
-PUT http://localhost:3000/cursos/matematicas HTTP/1.1
+###Modificar un curso por id
+PUT http://localhost:3000/api/cursos/programacion/10 HTTP/1.1
 Content-Type: application/json
 
-###Eliminar un cliente por id
-DELETE http://localhost:3000/cursos/programacion HTTP/1.1
+{
+    "id": 10,
+    "titulo": "Aprende programacion",
+    "lenguaje":"JavaScript",
+    "vistas": 33,
+    "nivel": "Intermedio"
+}
+
+###Modificar parcialmente un curso por id
+PATCH http://localhost:3000/api/cursos/programacion/4 HTTP/1.1
+Content-Type: application/json
+
+{
+    "id": 4,
+    "titulo": "Python intermedio",
+    "lenguaje":"Python"    
+}
+
+###Eliminar un curso por id
+DELETE http://localhost:3000/api/cursos/programacion/4 HTTP/1.1
 
