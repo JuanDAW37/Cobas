@@ -1,13 +1,12 @@
 import React from "react";
-import "./ListFam.css";
+import "./Headers.css";
 
-export function ListFam(props:any) {
-  return (
+export function Headers({titulo, opcion}) {  return (
     <div className="container">
-      <h1>Listado de Ivas</h1>
+      <h1 className="header">{titulo}</h1>
       <div className="list">
         <div className="list-item">          
-          Nombre de la Familia    
+          {opcion}   
         </div>        
       </div>
     </div>

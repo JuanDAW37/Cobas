@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react'
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import {useEffect, useState } from 'react'
 import './App.css'
-import {Button} from './components'
 import { useFetch } from './hooks/useFetch';
 import { Menu } from './components/Navigation/Menu/Menu';
-import { ListFam } from './components/Familias/Listado/ListFam';
 
 interface Data {
   id: number;
@@ -12,18 +12,12 @@ interface Data {
   email: string;
 }
 
-
-
 const url = 'https://jsonplaceholder.typicode.com/users';
 //Componente funcional
-function App() {  
-  const [active, setActive] = useState(false);
+function App() {    
   //Desestructuramos los valores que nos devuelve el hook useFetch
-  const {data, loading, error} = useFetch<Data>(url);  
-
-  const Active = () => {
-    setActive(!active);
-  }
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const {data, loading, error} = useFetch<Data>(url);    
 
   if (loading) {
     return <div>Loading...</div>
@@ -34,10 +28,7 @@ function App() {
   }
   return (    
     <div>
-      <Menu/>
-      if (active) {
-        <ListFam/>          
-      }         
+      <Menu />      
     </div>
   )    
 }
