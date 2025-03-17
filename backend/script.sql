@@ -66,7 +66,7 @@ CREATE TABLE IF NOT EXISTS detalbar(
 	metros DOUBLE(4,2),
 	importe DOUBLE(6,2),
 	CONSTRAINT fk_detAlbar FOREIGN KEY (albaran_id) REFERENCES albaranes(id),
-	CONSTRAINT fk_detProd FOREIGN KEY (producto_id) REFERENCES productos(id)
+	CONSTRAINT fk_detProd FOREIGN KEY (producto_id) REFERENCES productos(idproductos)
 );
 
 CREATE TABLE IF NOT EXISTS facturas (
@@ -96,6 +96,6 @@ CREATE TABLE IF NOT EXISTS detfactura(
 	metros DOUBLE(4,2),
 	importe DOUBLE(6,2),
 	CONSTRAINT fk_detFactu FOREIGN KEY (factura_id) REFERENCES facturas(id),
-	CONSTRAINT fk_factuDetProd FOREIGN KEY (producto_id) REFERENCES productos(id),
+	CONSTRAINT fk_factuDetProd FOREIGN KEY (producto_id) REFERENCES productos(idproductos),
 	CONSTRAINT fk_factuDetAlbar FOREIGN KEY (detalbar_id) REFERENCES detalbar(id)
 );

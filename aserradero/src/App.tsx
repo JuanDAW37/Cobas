@@ -12,20 +12,20 @@ interface Data {
   email: string;
 }
 
-const url = 'https://jsonplaceholder.typicode.com/users';
+//const url = 'http://localhost:1234/';
 //Componente funcional
 function App() {    
   //Desestructuramos los valores que nos devuelve el hook useFetch
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const {data, loading, error} = useFetch<Data>(url);    
+  /*const {data, loading, error} = useFetch<Data>(url);    
 
   if (loading) {
     return <div>Loading...</div>
   }
-    
+
   if (error) {
     return <div>Error: {error.message}</div>
-  }
+  }*/
   return (    
     <div>
       <Menu />      
