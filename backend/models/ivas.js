@@ -2,7 +2,7 @@ import connection from '../connection/connection.js';
 
 export class IvaModel{
     static async getAllIvas(){        
-        const query = `SELECT id, tipo FROM ivas;`;
+        const query = `SELECT id, tipo, nombre FROM ivas;`;
         try{
             const [ivas] = await connection.query(query);        
             return ivas;                
@@ -12,9 +12,8 @@ export class IvaModel{
     }
 
     static async getIvaById({id}){
-        const query = `SELECT id , tipo FROM ivas WHERE id = ?`;
-        try{
-            console.log({id})
+        const query = `SELECT id, tipo, nombre FROM ivas WHERE id = ?`;
+        try{            
             const [ivas]  = await connection.query(query, [id]);
             return ivas;
         }catch(error){
@@ -24,11 +23,12 @@ export class IvaModel{
 
     static async postIva({input}){
         const {
-            tipo
+            tipo,
+            nombre
         } = input
-        const query = `INSERT INTO ivas(tipo) VALUES (?);`;
+        const query = `INSERT INTO ivas(tipo, nombre) VALUES (?, ?);`;
         try{
-            return await connection.query(query, [tipo]);
+            return await connection.query(query, [tipo, nombre]);
         }catch(error){
             throw new Error('Error creando el tipo de IVA');
         }
@@ -36,11 +36,12 @@ export class IvaModel{
 
     static async putIva({id, input}){
         const {
-            tipo
+            tipo,
+            nombre
         } = input
-        const query = `UPDATE ivas SET tipo = ? WHERE id = ?;`;
+        const query = `UPDATE ivas SET tipo = ?, nombre = ? WHERE id = ?;`;
         try{
-            await connection.query(query, [tipo, id]); 
+            await connection.query(query, [tipo, nombre, id]); 
         }catch(error){
             throw new Error("Error modificando el tipo de IVA");            
         }        

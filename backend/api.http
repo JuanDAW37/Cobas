@@ -48,16 +48,47 @@ POST http://localhost:3001/api/iva HTTP/1.1
 Content-Type: application/json
 
 {
-    "tipo": 22
+    "tipo": 22,
+    "nombre": "IVA 22%"
 }
 
 ###
-PUT http://localhost:3001/api/iva/5 HTTP/1.1
+PUT http://localhost:3001/api/iva/6 HTTP/1.1
 Content-Type: application/json
 
 {
-    "tipo": 19
+    "tipo": 19,
+    "nombre": "IVA 19%"
 }
 
 ###
-DELETE http://localhost:3001/api/iva/4 HTTP/1.1
+DELETE http://localhost:3001/api/iva/6 HTTP/1.1
+
+
+###
+GET http://localhost:3001/api/familias HTTP/1.1
+
+###
+GET http://localhost:3001/api/familias/1 HTTP/1.1
+
+###
+GET http://localhost:3001/api/familiasName/Familia%201 HTTP/1.1
+
+###
+POST http://localhost:3001/api/familias HTTP/1.1
+Content-Type: application/json
+
+{
+    "nombre": "Familia 1"
+}
+
+###
+PUT http://localhost:3001/api/familias/1 HTTP/1.1
+Content-Type: application/json
+
+{
+    "nombre": "Tablas"
+}
+
+###
+DELETE http://localhost:3001/api/familias/2 HTTP/1.1
