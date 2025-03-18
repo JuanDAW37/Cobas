@@ -92,3 +92,61 @@ Content-Type: application/json
 
 ###
 DELETE http://localhost:3001/api/familias/2 HTTP/1.1
+
+
+###
+GET http://localhost:3001/api/clientes HTTP/1.1
+
+###
+GET http://localhost:3001/api/clientes/1 HTTP/1.1
+
+###
+GET http://localhost:3001/api//clientesName/Pepe%20Rodriguez HTTP/1.1
+
+###
+GET http://localhost:3001/api/clientesNif/76406782T HTTP/1.1
+
+###
+POST http://localhost:3001/api/clientes HTTP/1.1
+Content-Type: application/json
+
+{
+    "nombreApellidos": "Pepe Rodriguez",
+    "nif": "76406782T",
+    "direccion": "Calle Mayor 12",
+    "localidad": "Madrid",
+    "cp": 28080,
+    "provincia": "Madrid",
+    "pais": "España",
+    "telefono1": "666555444",
+    "telefono2": "445566",
+    "fax": "666555444",
+    "email": "peperodriguez@gmail.com",
+    "web": "www.peperodriguez.com",
+    "contacto": "Pepe",
+    "fechaAlta": "2021-01-01"
+}
+
+###
+PUT http://localhost:3001/api/clientes/1 HTTP/1.1
+Content-Type: application/json
+
+{
+    "nombreApellidos": "Pepe Rodriguez",
+    "nif": "76406782T",
+    "direccion": "Calle Mayor 12",
+    "localidad": "Madrid",
+    "cp": 28080,
+    "provincia": "Madrid",
+    "pais": "España",
+    "telefono1": "666555444",
+    "telefono2": "445566",
+    "fax": "666555444",
+    "email": "pepitoperez@hotmail.com",
+    "web": "www.peperodriguez.com",
+    "contacto": "Pepe",
+    "fechaAlta": "2021-01-01"
+}
+
+###
+DELETE http://localhost:3001/api/clientes/2 HTTP/1.1
