@@ -150,3 +150,45 @@ Content-Type: application/json
 
 ###
 DELETE http://localhost:3001/api/clientes/2 HTTP/1.1
+
+###
+GET http://localhost:3001/api/productos HTTP/1.1
+
+###
+GET http://localhost:3001/api/productos/1 HTTP/1.1
+
+###
+GET http://localhost:3001/api/productosName/Peras HTTP/1.1
+
+###
+POST http://localhost:3001/api/productos HTTP/1.1
+Content-Type: application/json
+
+{
+    "nombre": "Peras",    
+    "precio1": 2.5,
+    "precio2": 3.5,
+    "precio3": 4.5,
+    "precio4": 5.5,
+    "precio5": 6.5,
+    "iva_id": 1,
+    "familia_id": 1    
+}
+
+###
+PUT http://localhost:3001/api/productos/1 HTTP/1.1
+Content-Type: application/json
+
+{
+    "nombre": "Peras de agua",
+    "precio1": 2.5,
+    "precio2": 3.5,
+    "precio3": 4.5,
+    "precio4": 5.5,
+    "precio5": 6.5,
+    "iva_id": 1,
+    "familia_id": 1
+}
+
+###
+DELETE http://localhost:3001/api/productos/1 HTTP/1.1

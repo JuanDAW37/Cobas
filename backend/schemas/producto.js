@@ -11,6 +11,6 @@ const productoSchema = z.object({
     familia_id: z.number().int().positive().min(1, {message:'La familia, debe ser un número entero positivo'})
 })
 
-export function validarProductoSchema(producto){
+export function validarProducto(producto){
     return productoSchema.safeParse(producto);
 }
