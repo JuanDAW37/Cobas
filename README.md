@@ -1,2 +1,2 @@
 # Cobas
-Proyecto realizado con React y NodeJs para el primo
+Aplicación de facturación realizada con React, NodeJs y ExpressJs para mi primo.
