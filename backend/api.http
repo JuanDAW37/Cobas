@@ -69,7 +69,7 @@ DELETE http://localhost:3001/api/iva/6 HTTP/1.1
 GET http://localhost:3001/api/familias HTTP/1.1
 
 ###
-GET http://localhost:3001/api/familias/1 HTTP/1.1
+GET http://localhost:3001/api/familias/4 HTTP/1.1
 
 ###
 GET http://localhost:3001/api/familiasName/Familia%201 HTTP/1.1

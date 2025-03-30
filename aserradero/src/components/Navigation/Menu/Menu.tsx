@@ -4,7 +4,7 @@ import {Link} from '../Link/Link.tsx'
 import {Headers} from '../../Headers/Headers.tsx';
 
 export const Menu = () => {    
-    let select = 1;
+    let select=1;
 
     const familias = () => {        
         select = 1;
@@ -39,33 +39,33 @@ export const Menu = () => {
     // eslint-disable-next-line prefer-const    
     let [titulo, setTitulo] = useState('Familias');
     // eslint-disable-next-line prefer-const
-    let [opcion, setOpcion] = useState('Listado de Familias');
+    let [opcion, setOpcion] = useState(1);
 
     const Label = () => {
         switch(select){
             case 1:
                 setTitulo(titulo = 'Familias');            
-                setOpcion(opcion = 'Listado de Familias');        
+                setOpcion(opcion = 1);        
                 break;
             case 2:
                 setTitulo(titulo = 'Ivas');            
-                setOpcion(opcion = 'Listado de Ivas');        
+                setOpcion(opcion = 2);        
                 break;
             case 3:
                 setTitulo(titulo = 'Productos');            
-                setOpcion(opcion = 'Listado de Productos');        
+                setOpcion(opcion = 3);        
                 break;
             case 4:
                 setTitulo(titulo = 'Clientes');            
-                setOpcion(opcion = 'Listado de Clientes');        
+                setOpcion(opcion = 4);        
                 break;
             case 5:
                 setTitulo(titulo = 'Albaranes');            
-                setOpcion(opcion = 'Listado de Albaranes');        
+                setOpcion(opcion = 5);        
                 break;
             case 6:
                 setTitulo(titulo = 'Facturas');            
-                setOpcion(opcion = 'Listado de Facturas');        
+                setOpcion(opcion = 6);        
                 break;
         }       
     }
@@ -80,8 +80,8 @@ export const Menu = () => {
             <li><Link label='Albaranes' parentMethod = {albaranes} /></li>
             <li><Link label='Facturas' parentMethod = {facturas} /></li>
         </ul> 
-    </nav>
-    <Headers titulo = {titulo} opcion = {opcion}/>   
+    </nav>    
+        <Headers titulo={titulo} opcion={opcion}/>   
     </>
     );
 };

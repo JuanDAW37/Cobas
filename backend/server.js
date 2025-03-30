@@ -7,11 +7,14 @@ import { ClienteModel } from './models/clientes.js';
 import { ClienteRoute } from './routers/clientes.js';
 import { ProductoModel } from './models/productos.js';
 import { ProductoRoute } from './routers/productos.js';
+import { corsMiddleware } from './middlewares/cors.js';
+
 const port = 3001;
 
 const app = express()
 
-    app.use(json())
+    app.use(json());
+    app.use(corsMiddleware()); // Permite solicitudes desde esta dirección
 
     app.disable('x-powered-by') // Deshabiliata la cabecera de express     
 

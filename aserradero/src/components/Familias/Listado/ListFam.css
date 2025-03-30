@@ -22,9 +22,42 @@
 .list-item{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    align-items:center;
     padding: 10px;
     border-bottom: 1px solid #000;
     color: aliceblue;
     background-color: #000;
+}
+
+.tabla{
+    width: 100%; 
+    height: 100%;    
+}
+
+.titulos{
+    border: 1px solid whitesmoke;
+}
+
+.detalle{
+    color:white;
+    text-align: center;    
+    border-bottom: 1px solid whitesmoke;
+}
+
+.nuevo{
+    background-color: cadetblue;    
+}
+
+.modificar{
+    background-color:orangered;    
+}
+
+.borrar{
+    background-color: red;
+}
+
+.nuevo, .borrar, .modificar{
+    color:aliceblue;
+    width: 100px;
+    height: 50px;
 }

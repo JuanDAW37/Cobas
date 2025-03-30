@@ -5,7 +5,7 @@ import { response } from 'express';
 export class FamiliaController{
 
     getAll = async (request, response) => {
-        const [familias] = await FamiliaModel.getAllFamilias();
+        const familias = await FamiliaModel.getAllFamilias();
         response.status(200).json(familias);
     }
 
