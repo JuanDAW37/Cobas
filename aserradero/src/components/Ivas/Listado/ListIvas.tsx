@@ -1,5 +1,4 @@
 import {useState, useEffect} from "react";
-import "./ListIvas.css";
 import {HelperHttp} from '../../../helpers/HelperHttp'
 
 export function ListIvas() {
@@ -17,33 +16,57 @@ export function ListIvas() {
     }, []);  
     
     return (
-        <>              
-        <main className="list">                      
-        <article><button className="nuevo">Nuevo</button></article>
-            <section className="list-item">            
-                <table className="tabla">
-                    <thead>
-                        <tr>
-                            <th className="titulos">Id</th>
-                            <th className="titulos">Nombre</th>
-                            <th className="titulos">Tipo %</th>
-                            <th className="titulos" colSpan={2}>Opciones</th>
-                        </tr>
-                    </thead>               
-                    <tbody>                        
-                    {ivas.map((iva) => (                                                
-                            <tr key={iva.id}>
-                                <td className="detalle">{iva.id}</td>
-                                <td className="detalle">{iva.nombre}</td>
-                                <td className="detalle">{iva.tipo}</td>
-                                <td className="detalle modificar"><button className="modificar">Modificar</button></td>
-                                <td className="detalle borrar"><button className="borrar">Borrar</button></td>
-                            </tr>                                                    
-                    ))}
-                    </tbody>                    
-                </table>
+      <main className="bg-gray-100 flex justify-center min-h-screen">              
+        <main className="w-full mt-6 max-w-6xl px-6">
+            <section className="flex justify-between items-center mb-6">
+              <h1 className="text-3xl font-bold text-gray-800">Lista de Ivas</h1>
+              <button className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 
+                rounded-full font-semibold shadow-lg flex items-center gap-2 transition">        
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                  </svg>
+                Alta Iva
+              </button>
             </section>
+            <section className="overflow-x-auto bg-white rounded-3xl shadow-2xl">
+            <table className="w-full text-base text-left text-gray-800">
+                <thead className="bg-gray-200 text-sm uppercase text-gray-600">
+                    <tr>
+                        <th className="px-6 py-4 text-center">Id</th>
+                        <th className="px-6 py-4 text-center">Nombre</th>
+                        <th className="px-6 py-4 text-center">Tipo %</th>
+                        <th className="px-6 py-4 text-center">Acciones</th>
+                    </tr>
+                </thead>               
+                <tbody className="divide-y divide-gray-300">                        
+                    {ivas.map((iva) => (                                                
+                        <tr key={iva.id} className="hover:bg-gray-50 transition">
+                            <td className="px-6 py-5">{iva.id}</td>
+                            <td className="px-6 py-5 font-medium">{iva.nombre}</td>
+                            <td className="px-6 py-5">{iva.tipo}</td>
+                            <td className="px-6 py-5 flex justify-center gap-3">
+                              <button className="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-1.5
+                                rounded-full text-sm font-semibold shadow flex items-center gap-1">                  
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                    d="M15.232 5.232l3.536 3.536M9 13.5V21h7.5L21 16.5l-7.5-7.5L9 13.5z" />
+                                </svg>
+                                Modificar
+                              </button>
+                              <button className="bg-red-600 hover:bg-red-700 text-white px-4 py-1.5 
+                                rounded-full text-sm font-semibold shadow flex items-center gap-1">                
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                                Borrar
+                              </button>
+                            </td>
+                        </tr>                                                    
+                    ))}
+                </tbody>                    
+            </table>
+          </section>                                  
         </main>        
-        </>
+      </main>
     );
 }

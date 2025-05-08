@@ -1,6 +1,6 @@
 .menu{
     display: grid;
-    grid-template-columns:  1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns:  1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr;
     justify-content: center;
     align-items: center;
@@ -37,4 +37,9 @@
 
 .menu li{
     list-style-type: none;
+}
+
+.active-link{
+    border-bottom: thin solid red;
+    padding-bottom: 0.5rem;
 }
