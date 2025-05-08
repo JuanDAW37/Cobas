@@ -9,14 +9,14 @@ interface HeadersProps {
 }
 
 export function Headers({titulo, opcion}: HeadersProps) {  return (
-    <div className="container">
+    <main className="container">
       <h1 className="header">{titulo}</h1>
-      <div className="list">
-        <div className="list-item">          
+      <section className="list">
+        <article className="list-item">          
           {opcion == 1 && <ListFam />}   
           {opcion == 2 && <ListIvas />}   
-        </div>        
-      </div>
-    </div>
+        </article>        
+      </section>
+    </main>
   );
 }

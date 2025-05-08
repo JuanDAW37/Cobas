@@ -1,59 +1,49 @@
 import {useState, useEffect} from "react";
 import "./ListIvas.css";
+import {HelperHttp} from '../../../helpers/HelperHttp'
 
 export function ListIvas() {
     const url = 'http://localhost:3001/api/iva';
     const [ivas, setIvas] = useState<{id:number; tipo:number; nombre:string }[]>([]);    
     
-    useEffect(() => {                
-        const getIvas = async (url:string) => {
-            const res = (await fetch(url)),
-                json = await res.json();            
-            json.forEach(async (e: { id: number; tipo: number; nombre: string }) => {
-                const iva: { id: number; tipo: number; nombre: string } = {
-                    id: e.id,
-                    tipo: e.tipo,
-                    nombre: e.nombre
-                }                        
-                setIvas((ivas: { id: number; tipo: number; nombre: string }[]) => [...ivas, iva]);                        
-            });                                                            
-        }                
-        getIvas(url);                               
+    useEffect(() => {
+        HelperHttp().get(url).then((res)=>{            
+            if (!res.err) {
+                setIvas(res);
+            } else {
+                setIvas([]);
+            }
+        });        
     }, []);  
     
     return (
-        <>
-        <div className="container">
-        <div><h1>Listado de Tipos de Iva</h1></div>        
-        <div className="list">                      
-        <div><button className="nuevo">Nuevo</button></div>
-            <div className="list-item">            
+        <>              
+        <main className="list">                      
+        <article><button className="nuevo">Nuevo</button></article>
+            <section className="list-item">            
                 <table className="tabla">
                     <thead>
                         <tr>
                             <th className="titulos">Id</th>
                             <th className="titulos">Nombre</th>
                             <th className="titulos">Tipo %</th>
-                            <th className="titulos" colSpan="2">Opciones</th>
+                            <th className="titulos" colSpan={2}>Opciones</th>
                         </tr>
                     </thead>               
-                    <tbody className="cuerpo">                        
-                    {ivas.map((iva) => (                        
-                        <>
-                            <tr className="fila">
-                                <td className="detalle" key={iva.id}>{iva.id}</td>
+                    <tbody>                        
+                    {ivas.map((iva) => (                                                
+                            <tr key={iva.id}>
+                                <td className="detalle">{iva.id}</td>
                                 <td className="detalle">{iva.nombre}</td>
                                 <td className="detalle">{iva.tipo}</td>
-                                <td><button className="detalle modificar">Modificar</button></td>
-                                <td><button className="detalle borrar">Borrar</button></td>
-                            </tr>                            
-                        </>
+                                <td className="detalle modificar"><button className="modificar">Modificar</button></td>
+                                <td className="detalle borrar"><button className="borrar">Borrar</button></td>
+                            </tr>                                                    
                     ))}
                     </tbody>                    
                 </table>
-            </div>
-        </div>
-        </div>
+            </section>
+        </main>        
         </>
     );
 }
