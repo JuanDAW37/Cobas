@@ -26,8 +26,7 @@ import { FormModifFactu } from './components/Facturas/FormModif/FormModifFactu.t
 //Componente funcional
 function App() {    
   return (    
-    
-      <div>                
+      <div className="bg-[url('./wood-texture.jpg')] bg-cover bg-center min-h-screen text-brown-900">                
         <BrowserRouter>
         <Menu />
           <Routes>

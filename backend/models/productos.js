@@ -5,7 +5,8 @@ export class ProductoModel {
     static getAllProductos = async () => {
         const query = `SELECT idproductos, nombre, precio1, precio2, precio3, precio4, precio5, iva_id, familia_id FROM productos;`;
         try {
-            const [productos] = await connection.query(query);
+            let productos = await connection.query(query);
+            productos = productos.length > 2 ? [productos] : productos
             return productos;
         } catch (error) {
             throw new Error(`Error recuperando Productos ${error.message}`);

@@ -23,7 +23,7 @@ export function ListIvas() {
               <button className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 
                 rounded-full font-semibold shadow-lg flex items-center gap-2 transition">        
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4" />
                   </svg>
                 Alta Iva
               </button>
@@ -48,7 +48,7 @@ export function ListIvas() {
                               <button className="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-1.5
                                 rounded-full text-sm font-semibold shadow flex items-center gap-1">                  
                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" 
                                     d="M15.232 5.232l3.536 3.536M9 13.5V21h7.5L21 16.5l-7.5-7.5L9 13.5z" />
                                 </svg>
                                 Modificar
@@ -56,7 +56,7 @@ export function ListIvas() {
                               <button className="bg-red-600 hover:bg-red-700 text-white px-4 py-1.5 
                                 rounded-full text-sm font-semibold shadow flex items-center gap-1">                
                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
                                 </svg>
                                 Borrar
                               </button>

@@ -4,8 +4,9 @@ export class IvaModel{
     static async getAllIvas(){        
         const query = `SELECT id, tipo, nombre FROM ivas;`;
         try{
-            const [ivas] = await connection.query(query);        
-            return ivas;                
+            let ivas = await connection.query(query);                        
+            ivas = ivas.length > 2 ? ivas : ivas[0];
+            return ivas
         }catch(error){
             throw new Error(`Error recuperando Iva ${error.message}`);
         }        
