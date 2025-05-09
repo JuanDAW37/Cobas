@@ -56,9 +56,9 @@ export const ListClientes = () => {
                         
                         <tr key={cliente.id} className="hover:bg-gray-50 transition">
                             <td className="px-6 py-5">{cliente.id}</td>
-                            <td className="px-6 py-5 font-medium">{cliente.nombreApellidos}</td>
+                            <td className="px-6 py-5 md:w-50 font-medium">{cliente.nombreApellidos}</td>
                             <td className="px-6 py-5 font-medium">{cliente.nif}</td>
-                            <td className="px-6 py-5 font-medium">{cliente.direccion}</td>
+                            <td className="px-6 py-5 md:w-64 font-medium">{cliente.direccion}</td>
                             <td className="px-6 py-5 font-medium">{cliente.localidad}</td>
                             <td className="px-6 py-5 font-medium">{cliente.cp}</td>
                             <td className="px-6 py-5 font-medium">{cliente.provincia}</td>

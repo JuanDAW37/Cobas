@@ -1,9 +1,11 @@
 import {useState, useEffect} from "react";
-import {HelperHttp} from '../../../helpers/HelperHttp'
+import {HelperHttp} from '../../../helpers/HelperHttp';
+
+interface Ivas {id:number; tipo:number; nombre:string };
 
 export function ListIvas() {
     const url = 'http://localhost:3001/api/iva';
-    const [ivas, setIvas] = useState<{id:number; tipo:number; nombre:string }[]>([]);    
+    const [ivas, setIvas] = useState<Ivas[]>([]);    
     
     useEffect(() => {
         HelperHttp().get(url).then((res)=>{            

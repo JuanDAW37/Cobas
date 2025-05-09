@@ -6,8 +6,7 @@ export class FamiliaModel {
         const query = `SELECT id, nombre FROM familias;`;
         try {
             let familias = await connection.query(query);
-            familias = familias.length > 2 ? familias : familias[0]
-            console.log(familias)
+            familias = familias.length > 2 ? familias : familias[0]            
             return familias;
         } catch (error) {
             throw new Error(`Error recuperando Familias ${error.message}`);
