@@ -5,8 +5,7 @@ export class FamiliaModel {
     static getAllFamilias = async () => {
         const query = `SELECT id, nombre FROM familias;`;
         try {
-            let familias = await connection.query(query);
-            familias = familias.length > 2 ? familias : familias[0]            
+            const [familias] = await connection.query(query);            
             return familias;
         } catch (error) {
             throw new Error(`Error recuperando Familias ${error.message}`);

@@ -4,7 +4,7 @@ import {ProductoModel} from '../models/productos.js';
 export class ProductoController{
 
     getAll = async (request, response) => {
-        const [productos] = await ProductoModel.getAllProductos();
+        const productos = await ProductoModel.getAllProductos();
         response.status(200).json(productos);
     }
 

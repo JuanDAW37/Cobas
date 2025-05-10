@@ -4,7 +4,7 @@ import {ClienteModel} from '../models/clientes.js'
 export class ClienteController{
 
     getAll = async (request, response) => {
-        const [clientes] = await ClienteModel.getAllClientes();
+        const clientes = await ClienteModel.getAllClientes();
         response.status(200).json(clientes);
     }
 

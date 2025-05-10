@@ -4,10 +4,9 @@ export class ClienteModel {
     
     static getAllClientes = async () => {
         const query = `SELECT id, nombreApellidos, nif, direccion, localidad, cp, provincia, pais, telefono1,
-            telefono2, fax, email, web, contacto, fechaAlta FROM clientes LIMIT 1;`;
+            telefono2, fax, email, web, contacto, fechaAlta FROM clientes;`;
         try {
-            let clientes = await connection.query(query);
-            clientes = clientes.length > 2 ? [clientes] : clientes            
+            const [clientes] = await connection.query(query);                                  
             return clientes;
         } catch (error) {
             throw new Error(`Error recuperando Clientes ${error.message}`);
