@@ -12,7 +12,7 @@ export const HelperHttp = () => {
         options.body = JSON.stringify(options.body) || false;
         if(!options.body) delete options.body;
         setTimeout(()=>{controller.abort()}, 3000)
-        try{
+        try{            
             const response = await fetch(endpoint, options);
             if(!response.ok) throw {error:true, status: response.status || '00', statusText:response.statusText || 'Ocurrió un error'}            
             return await response.json();                        

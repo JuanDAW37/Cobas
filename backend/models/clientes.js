@@ -58,7 +58,7 @@ export class ClienteModel {
                 telefono2, fax, email, web, contacto, fechaAlta]);
         }
         catch (error) {
-            throw new Error('Error creando el Cliente');
+            throw new Error(`Error creando el Cliente ${error.message}`); 
         }
     }
 

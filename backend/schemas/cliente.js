@@ -14,9 +14,10 @@ const clienteSchema = z.object({
     telefono2: z.string().optional({message:'El teléfono del cliente debe ser una cadena'}),
     fax: z.string().optional({message:'El fax del cliente debe ser una cadena'}),
     email: z.any().optional(),
-    web: z.any().optional()
+    web: z.any().optional(),
+    fechaAlta: z.string().optional()
 });
 
-export function validarCliente(cliente){
+export function validarCliente(cliente){    
     return clienteSchema.safeParse(cliente);
 }

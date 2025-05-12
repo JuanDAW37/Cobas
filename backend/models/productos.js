@@ -3,7 +3,12 @@ import connection from '../connection/connection.js';
 export class ProductoModel {
 
     static getAllProductos = async () => {
-        const query = `SELECT idproductos, nombre, precio1, precio2, precio3, precio4, precio5, iva_id, familia_id FROM productos;`;
+        const query = `SELECT productos.idproductos as id, productos.nombre as nombre, productos.precio1 as precio1,
+            productos.precio2 as precio2, productos.precio3 as precio3, productos.precio4 as precio4, productos.precio5 as precio5,
+            ivas.id as iva_id, ivas.tipo as iva_tipo, ivas.nombre as iva_nombre, familias.id as familia_id, familias.nombre as familia_nombre
+            FROM productos
+            INNER JOIN ivas ON ivas.id = productos.iva_id
+            INNER JOIN familias ON familias.id = productos.familia_id;`;
         try {
             const [productos] = await connection.query(query);            
             return productos;

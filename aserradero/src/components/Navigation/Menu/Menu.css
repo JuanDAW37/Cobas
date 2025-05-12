@@ -40,6 +40,6 @@
 }
 
 .active-link{
-    border-bottom: thin solid red;
+    border-bottom: 1px solid #eecfad;
     padding-bottom: 0.5rem;
 }

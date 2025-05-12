@@ -27,6 +27,9 @@ export class ClienteController{
     }
 
     post = async (request, response) => {
+        //TODO:Revisar validarCliente
+        /*const crearCliente = await ClienteModel.postCliente({input: request.body});
+        return response.status(201).json(crearCliente);*/
         const validate = validarCliente(request.body);
         if(validate.success){
             const crearCliente = await ClienteModel.postCliente({input: validate.data});

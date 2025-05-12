@@ -19,7 +19,7 @@ export function ListFam() {
     }, []);  
 
     return (
-        <main className="bg-gray-100 flex justify-center min-h-screen">              
+        <main className="bg-gray-100 flex justify-center min-h-screen flex-row">              
         <main className="w-full mt-6 max-w-6xl px-6">
             <section className="flex justify-between items-center mb-6">
                 <h1 className="text-3xl font-bold text-gray-800">Lista de Familias</h1>

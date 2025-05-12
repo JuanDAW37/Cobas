@@ -18,10 +18,3 @@
     animation: logo-spin infinite 20s linear;
   }
 }
-
-.footer{
-  position: bottom;
-  text-align: center;
-  width: 100%;
-  top:-1;
-}
