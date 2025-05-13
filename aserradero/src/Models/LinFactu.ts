@@ -3,10 +3,10 @@ import {Factura} from './Factura.ts';
 import { LinAlbar } from './LinAlbar.ts';
 
 export interface LinFactu{
-    id:BigInteger,
-    producto_id:BigInteger,
-    factura_id:BigInteger,
-    detalbar_id:BigInteger,
+    id:bigint,
+    producto_id:bigint,
+    factura_id:bigint,
+    detalbar_id:bigint,
     unidades:number,
     L:number,
     A:number,

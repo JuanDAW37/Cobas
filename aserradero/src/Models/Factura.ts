@@ -3,12 +3,12 @@ import { Albaran } from './Albaran.ts';
 import { Cliente } from "./Cliente.ts";
 
 export interface Factura{
-    id:BigInteger,
+    id:bigint,
     numero:string,
     fecha:string,
     ano:number,
-    albaran_id:BigInteger,
-    cliente_id:BigInteger,
+    albaran_id:bigint,
+    cliente_id:bigint,
     base:number,
     cuota:number,
     total:number,

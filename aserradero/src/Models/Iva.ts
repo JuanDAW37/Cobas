@@ -1,5 +1,5 @@
 export interface Iva{
-    id:BigInteger,
+    id:bigint,
     nombre:string,
     tipo:number
 }

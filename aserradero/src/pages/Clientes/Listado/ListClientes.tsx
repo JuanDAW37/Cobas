@@ -1,20 +1,11 @@
 import {useState, useEffect} from "react";
 import {HelperHttp} from '../../../helpers/HelperHttp';
 import { Link } from "react-router-dom";
-
-interface Clientes {
-    id:number,
-    nombreApellidos:string,
-    nif:string,
-    direccion:string,
-    localidad:string,
-    cp:number,
-    provincia:string
-}
+import { Cliente } from "../../../Models/Cliente";
 
 export const ListClientes = () => {
     const url = 'http://localhost:3001/api/clientes';
-    const [clientes, setClientes] = useState<Clientes[]>([]);    
+    const [clientes, setClientes] = useState<Cliente[]>([]);    
     
     useEffect(() => {                
         HelperHttp().get(url).then((res)=>{            

@@ -1,5 +1,5 @@
 export interface Cliente {
-    id:BigInteger,
+    id?:bigint,
     nombreApellidos:string,
     nif:string,
     direccion:string,

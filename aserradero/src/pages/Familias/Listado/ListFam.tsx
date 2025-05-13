@@ -1,12 +1,11 @@
 import {useState, useEffect} from "react";
-//import "./ListFam.css";
 import {HelperHttp} from '../../../helpers/HelperHttp';
+import { Familia } from "../../../Models/Familia";
 
-interface Familias{id:number; nombre:string }
 
 export function ListFam() {
     const url = 'http://localhost:3001/api/familias';
-    const [familias, setFamilias] = useState<Familias[]>([]);    
+    const [familias, setFamilias] = useState<Familia[]>([]);    
     
     useEffect(() => {                
         HelperHttp().get(url).then((res)=>{            

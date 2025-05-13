@@ -1,4 +1,4 @@
 export interface Familia{
-    id:BigInteger,
+    id:bigint,
     nombre:string
 }
