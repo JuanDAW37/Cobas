@@ -12,5 +12,7 @@ export interface Producto{
     iva_id:bigint,
     familia_id:bigint,
     iva:Iva,
-    familia:Familia
+    familia:Familia,
+    iva_tipo:number,
+    familia_nombre:string
 }

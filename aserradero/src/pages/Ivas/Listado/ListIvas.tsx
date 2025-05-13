@@ -1,11 +1,10 @@
 import {useState, useEffect} from "react";
 import {HelperHttp} from '../../../helpers/HelperHttp';
-
-interface Ivas {id:number; tipo:number; nombre:string };
+import { Iva } from "../../../Models/Iva";
 
 export function ListIvas() {
     const url = 'http://localhost:3001/api/iva';
-    const [ivas, setIvas] = useState<Ivas[]>([]);    
+    const [ivas, setIvas] = useState<Iva[]>([]);    
     
     useEffect(() => {
         HelperHttp().get(url).then((res)=>{            
@@ -18,7 +17,7 @@ export function ListIvas() {
     }, []);  
     
     return (
-      <main className="bg-gray-100 flex justify-center min-h-screen flex-row">              
+      <main className="bg-gray-100 flex justify-center flex-row">              
         <main className="w-full mt-6 max-w-6xl px-6">
             <section className="flex justify-between items-center mb-6">
               <h1 className="text-3xl font-bold text-gray-800">Lista de Ivas</h1>

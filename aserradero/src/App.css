@@ -4,6 +4,27 @@
   text-align: center;
 }
 
+.app{
+  display: grid;
+  min-height: 100dvh;
+  grid-template-rows: auto 1fr auto;
+}
+
+.izquierda{
+  text-align: left;
+}
+
+.botones{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 4px;
+}
+
+button:hover{
+  cursor: pointer;
+}
+
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);

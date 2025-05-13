@@ -26,7 +26,7 @@ import { FormModifFactu } from './pages/Facturas/FormModif/FormModifFactu.tsx';
 //Componente funcional
 function App() {    
   return (    
-      <>                
+      <div className='app'>                
         <BrowserRouter>
         <Menu />
           <Routes>
@@ -66,7 +66,7 @@ function App() {
           </Routes>
         </BrowserRouter>      
         <div className="footer"><Footer /></div>
-      </>    
+      </div>    
     
   )    
 }

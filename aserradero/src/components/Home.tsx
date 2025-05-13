@@ -1,15 +1,13 @@
 
 export const Home = () => {
     return (
-        <main>
-            <section className="bg-[#f5f1e9]/90 min-h-screen">
-                <section className="text-center py-20 px-6">
-                    <h2 className="text-5xl font-extrabold mb-4 text-brown-800">Transformamos la madera en confianza</h2>
-                    <p className="text-xl text-brown-700 max-w-2xl mx-auto mb-8">
-                        Desde troncos hasta estructuras, brindamos calidad, tradición y compromiso desde hace más de 40 años.
-                    </p>                    
-                </section>
-            </section>
+        <main>           
+            <section className="text-center py-20 px-6">
+                <h2 className="text-5xl font-extrabold mb-4 text-brown-800">Transformamos la madera en confianza</h2>
+                <p className="text-xl text-brown-700 max-w-2xl mx-auto mb-8">
+                    Desde troncos hasta estructuras, brindamos calidad, tradición y compromiso desde hace más de 40 años.
+                </p>                    
+            </section>            
             <section id="servicios" className="px-6 py-16 bg-[#ede4d3]">
                 <h3 className="text-3xl font-bold text-center mb-10">Nuestros Servicios</h3>
                 <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">

@@ -1,8 +1,14 @@
-import { useState } from "react"
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {HelperHttp} from '../../../helpers/HelperHttp';
-import {Cliente} from '../../../Models/Cliente'
+import {Cliente} from '../../../Models/Cliente';
 
 export const FormAltaCli = () => {
+    const styles = {
+        fontWeight: "bold",
+        color: "#dc3545",
+    };    
+    const navigate = useNavigate();
     const hoy = new Date();
     let dia = hoy.getDate();
     let mes = hoy.getMonth()+1;    
@@ -30,6 +36,10 @@ export const FormAltaCli = () => {
 
     const [formData, setFormData] = useState<Cliente>(initialData);
 
+    const handleGoBack = () => {
+        navigate(-1);
+    }
+
     const handleChange = (e) => {
         setFormData({...formData, [e.target.name]:e.target.value,})        
     }
@@ -52,8 +62,7 @@ export const FormAltaCli = () => {
             contacto:formData.contacto,
             fechaAlta:formData.fechaAlta,            
         }                   
-        data.fechaAlta = `${data.fechaAlta.substring(6)}-${data.fechaAlta.substring(3,5)}-${data.fechaAlta.substring(0,2)}`;
-        console.log(data.fechaAlta);
+        data.fechaAlta = `${data.fechaAlta.substring(6)}-${data.fechaAlta.substring(3,5)}-${data.fechaAlta.substring(0,2)}`;        
         const options = {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
@@ -62,160 +71,176 @@ export const FormAltaCli = () => {
         api.post(url, options).then((res)=>{            
             if (!res.error) {                
                 console.log('Datos enviados', res);
+                setFormData(initialData);
             }
         });
     }
 
     return (
-    <div className="w-full max-w-9/10 mx-auto bg-white shadow-lg rounded-2xl p-6 mt-10">
+    <div className="w-full max-w-3/4 mx-auto bg-white shadow-lg rounded-2xl p-6 mt-10">
         <h2 className="text-2xl font-bold mb-6 text-center">Alta de Cliente</h2>
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="izquierda space-y-4">
         <div>
-            <label className="w-md text-sm font-medium text-gray-700">Nombre y apellidos</label>
+            <label className="w-md text-sm font-medium text-gray-700"><span style={styles}>*</span>Nombre y apellidos</label>
             <input
                 type="text"
                 name="nombreApellidos"
                 value={formData.nombreApellidos}
                 onChange={handleChange}
                 required
-                className="ml-1 md-1 mt-1 w-md rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                placeholder="Nombre y apellidos, ó Razón Social..."
+                className="ml-5 mt-1 w-md rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
             />
-            <label className="w-md text-sm font-medium text-gray-700">NIF / CIF</label>
+            <label className="w-md text-sm font-medium text-gray-700"><span style={styles}>*</span>NIF / CIF</label>
             <input
                 type="text"
                 name="nif"
                 value={formData.nif}
                 onChange={handleChange}
+                placeholder="NIF ó CIF..."
                 required
-                className="ml-1 mt-1 w-md rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                className="ml-5 mt-1 w-small rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
             />
-        </div>        
+        </div>    
         <div>
-            <label className="w-md text-sm font-medium text-gray-700">Dirección</label>
+            <label className="w-md text-sm font-medium text-gray-700"><span style={styles}>*</span>Dirección</label>
             <input
                 type="text"
                 name="direccion"
                 value={formData.direccion}
                 onChange={handleChange}
+                placeholder="Dirección..."
                 required
-                className="mt-1 w-md rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                className="mt-1 ml-5 w-md rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
             />
-            <label className="w-md text-sm font-medium text-gray-700">Localidad</label>
+            <label className="w-md text-sm font-medium text-gray-700"><span style={styles}>*</span>Localidad</label>
             <input
                 type="text"
                 name="localidad"
                 value={formData.localidad}
                 onChange={handleChange}
+                placeholder="Localidad..."
                 required
-                className="mt-1 w-md rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                className="mt-1 ml-5 w-md rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
             />
-            <label className="w-md text-sm font-medium text-gray-700">C.P.</label>
+            <label className="w-md text-sm font-medium text-gray-700"><span style={styles}>*</span>C.P.</label>
             <input
                 type="number"
                 name="cp"
                 value={formData.cp}
                 onChange={handleChange}
+                placeholder="Código postal..."
                 required
-                className="mt-1 w-md rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                className="mt-1 ml-5 w-small rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
             />
-            <label className="block w-md text-sm font-medium text-gray-700">Provincia</label>
+            </div>
+            <div>
+            <label className="w-md text-sm font-medium text-gray-700"><span style={styles}>*</span>Provincia</label>
             <input
                 type="text"
                 name="provincia"
                 value={formData.provincia}
                 onChange={handleChange}
+                placeholder="Provincia..."
                 required
-                className="mt-1 w-md block rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                className="mt-1 ml-5 w-md rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
             />
-            <label className="block w-md text-sm font-medium text-gray-700">País</label>
+            <label className="w-md text-sm font-medium text-gray-700"><span style={styles}>*</span>País</label>
             <input
                 type="text"
                 name="pais"
                 value={formData.pais}
                 onChange={handleChange}
+                placeholder="País..."
                 required
-                className="mt-1 w-md block rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                className="mt-1 ml-5 w-md rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
             />
         </div>                
         <div>
-            <label className="block w-md text-sm font-medium text-gray-700">Teléfonos</label>
+            <label className="w-md text-sm font-medium text-gray-700">Teléfonos</label>            
             <input
                 type="tel"
                 name="telefono1"
                 value={formData.telefono1}
+                placeholder="Primer teléfono..."
                 onChange={handleChange}
-                className="mt-1 block w-md rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                className="mt-1 ml-5 w-small rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
             />
             <input
                 type="tel"
                 name="telefono2"
                 value={formData.telefono2}
+                placeholder="Segundo teléfono..."
                 onChange={handleChange}
-                className="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                className="mt-1 ml-5 w-small rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
             />
-        </div>
-        <div>
-            <label className="block text-sm font-medium text-gray-700">Fax</label>
+            <label className="text-sm font-medium text-gray-700">Fax</label>
             <input
                 type="tel"
                 name="fax"
                 value={formData.fax}
                 onChange={handleChange}
-                className="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                placeholder="Fax..."
+                className="mt-1 ml-5 w-small rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
             />
-        </div>
+        </div>        
         <div>
-            <label className="block text-sm font-medium text-gray-700">Email</label>
+            <label className="text-sm font-medium text-gray-700">Email</label>
             <input
                 type="email"
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                className="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                placeholder="email..."
+                className="mt-1 ml-5 w-md rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
             />
-        </div>
-        <div>
-            <label className="block text-sm font-medium text-gray-700">Web</label>
+            <label className="text-sm font-medium text-gray-700">Web</label>
             <input
                 type="text"
                 name="web"
                 value={formData.web}
                 onChange={handleChange}
-                className="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                placeholder="Página web..."
+                className="mt-1 ml-5 w-md rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
             />
-        </div>
+        </div>        
         <div>
-            <label className="block text-sm font-medium text-gray-700">Contacto</label>
+            <label className="text-sm font-medium text-gray-700">Contacto</label>
             <input
                 type="text"
                 name="contacto"
                 value={formData.contacto}
                 onChange={handleChange}
-                className="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                placeholder="Persona de contacto..."
+                className="mt-1 ml-5 w-md rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
             />
         </div>
         <div>
-            <label className="block text-sm font-medium text-gray-700">Fecha de alta</label>
+            <label className="text-sm font-medium text-gray-700">Fecha de alta:</label>
             <input
                 type="text"
                 name="fechaAlta"
                 value={formData.fechaAlta}
                 onChange={handleChange}
-                className="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                placeholder="Fecha de alta..."
+                className="mt-1 ml-5 w-small rounded-md shadow-sm"
             />
         </div>
-        <button
-            type="submit"
-            className="w-full bg-blue-600 text-white py-2 rounded-xl hover:bg-blue-700 transition-colors"
-        >
-            Guardar
-        </button>
-        <button
-            type="reset"
-            className="w-full bg-red-600 text-white py-2 rounded-xl hover:bg-red-700 transition-colors"
-        >
-            Volver
-        </button>
+        <div className="botones">
+            <button
+                type="submit"
+                className="w-md bg-blue-600 text-white py-2 rounded-xl hover:bg-blue-700 transition-colors"
+            >
+                Guardar
+            </button>
+            <button
+                type="reset"
+                className="w-md bg-red-600 text-white py-2 rounded-xl hover:bg-red-700 transition-colors"
+                onClick={handleGoBack}
+            >
+                Volver
+            </button>
+        </div>
       </form>
     </div>
     )
