@@ -30,7 +30,7 @@ export function ListFam() {
                     Alta Familia
                 </button>
             </section>
-            <section className="overflow-x-auto bg-white rounded-3xl shadow-2xl">
+            <section className="overflow-x-auto h-175 max-h-full md:max-h-screen min-h-auto bg-white rounded-3xl shadow-2xl">
             <table className="w-full text-base text-left text-gray-800">
                 <thead className="bg-gray-200 text-sm uppercase text-gray-600">
                     <tr>

@@ -15,6 +15,7 @@ const clienteSchema = z.object({
     fax: z.string().optional({message:'El fax del cliente debe ser una cadena'}),
     email: z.any().optional(),
     web: z.any().optional(),
+    contacto:z.string().optional(),
     fechaAlta: z.string().optional()
 });
 

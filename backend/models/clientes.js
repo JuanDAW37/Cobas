@@ -50,7 +50,7 @@ export class ClienteModel {
         const {
             nombreApellidos, nif, direccion, localidad, cp, provincia, pais, telefono1,
             telefono2, fax, email, web, contacto, fechaAlta
-        } = input
+        } = input        
         const query = `INSERT INTO clientes(nombreApellidos, nif, direccion, localidad, cp, provincia, pais, telefono1,
             telefono2, fax, email, web, contacto, fechaAlta) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);`;
         try {

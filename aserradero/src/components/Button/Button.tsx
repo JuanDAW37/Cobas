@@ -1,14 +1,16 @@
+import React from 'react';
 import "./Button.css";
 
 interface Props{
     label:string
-    parentMethod:()=>void
+    parentMethod:(e:React.MouseEvent<HTMLButtonElement>)=>void,
+    style:string
 }
 
-export const Button = ({label, parentMethod}:Props) => {
+export const Button = ({label, parentMethod, style}:Props) => {
  
     return (
-    <button className={"custom-button"} onClick={parentMethod}>
+    <button className={style} onClick={parentMethod}>
     { label }
   </button> )
 };

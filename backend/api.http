@@ -1,42 +1,3 @@
-##Recuperar todos los clientes
-GET http://localhost:3000/api/cursos HTTP/1.1
-
-###Crear un curso por id fija
-POST http://localhost:3000/api/cursos/programacion HTTP/1.1
-Content-Type: application/json
-
-{
-    "id": 4,
-    "titulo": "Aprende programacion",
-    "lenguaje":"JavaScript",
-    "vistas": 0,
-    "nivel": "Intermedio"
-}
-###Modificar un curso por id
-PUT http://localhost:3000/api/cursos/programacion/10 HTTP/1.1
-Content-Type: application/json
-
-{
-    "id": 10,
-    "titulo": "Aprende programacion",
-    "lenguaje":"JavaScript",
-    "vistas": 33,
-    "nivel": "Intermedio"
-}
-
-###Modificar parcialmente un curso por id
-PATCH http://localhost:3000/api/cursos/programacion/4 HTTP/1.1
-Content-Type: application/json
-
-{
-    "id": 4,
-    "titulo": "Python intermedio",
-    "lenguaje":"Python"    
-}
-
-###Eliminar un curso por id
-DELETE http://localhost:3000/api/cursos/programacion/4 HTTP/1.1
-
 ###
 GET http://localhost:3001/api/iva HTTP/1.1
 
@@ -123,7 +84,7 @@ Content-Type: application/json
     "fax": "666555444",
     "email": "peperodriguez@gmail.com",
     "web": "www.peperodriguez.com",
-    "contacto": "Pepe",
+    "contacto": "Luisito",
     "fechaAlta": "2025-05-12"
 }
 

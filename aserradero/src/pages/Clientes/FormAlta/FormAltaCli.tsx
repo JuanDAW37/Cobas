@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {HelperHttp} from '../../../helpers/HelperHttp';
 import {Cliente} from '../../../Models/Cliente';
+import { Button } from "../../../components";
+import { Input } from "../../../components/Input/Input";
 
 export const FormAltaCli = () => {
     const styles = {
@@ -36,15 +38,16 @@ export const FormAltaCli = () => {
 
     const [formData, setFormData] = useState<Cliente>(initialData);
 
-    const handleGoBack = () => {
+    const handleGoBack = () => {        
         navigate(-1);
     }
 
-    const handleChange = (e) => {
-        setFormData({...formData, [e.target.name]:e.target.value,})        
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>):void => {
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>):void => {
         e.preventDefault();
         const data = {
             nombreApellidos:formData.nombreApellidos,
@@ -61,7 +64,8 @@ export const FormAltaCli = () => {
             web:formData.web,
             contacto:formData.contacto,
             fechaAlta:formData.fechaAlta,            
-        }                   
+        }
+        console.log(data)
         data.fechaAlta = `${data.fechaAlta.substring(6)}-${data.fechaAlta.substring(3,5)}-${data.fechaAlta.substring(0,2)}`;        
         const options = {
             method: 'POST',
@@ -82,164 +86,64 @@ export const FormAltaCli = () => {
         <form onSubmit={handleSubmit} className="izquierda space-y-4">
         <div>
             <label className="w-md text-sm font-medium text-gray-700"><span style={styles}>*</span>Nombre y apellidos</label>
-            <input
-                type="text"
-                name="nombreApellidos"
-                value={formData.nombreApellidos}
-                onChange={handleChange}
-                required
-                placeholder="Nombre y apellidos, ó Razón Social..."
-                className="ml-5 mt-1 w-md rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
-            />
-            <label className="w-md text-sm font-medium text-gray-700"><span style={styles}>*</span>NIF / CIF</label>
-            <input
-                type="text"
-                name="nif"
-                value={formData.nif}
-                onChange={handleChange}
-                placeholder="NIF ó CIF..."
-                required
-                className="ml-5 mt-1 w-small rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
-            />
+            <Input type={"text"} name={"nombreApellidos"} formData={formData.nombreApellidos} method={handleChange}
+            placeholder={"Nombre y apellidos..."} style={"ml-5 mt-1 w-md rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"} />
+            <label className="w-md text-sm font-medium text-gray-700"><span style={styles}>*</span>NIF / CIF</label>            
+            <Input type={"text"} name={"nif"} formData={formData.nif} method={handleChange}
+            placeholder={"NIF ó CIF..."} style={"ml-5 mt-1 w-small rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"} />
         </div>    
         <div>
             <label className="w-md text-sm font-medium text-gray-700"><span style={styles}>*</span>Dirección</label>
-            <input
-                type="text"
-                name="direccion"
-                value={formData.direccion}
-                onChange={handleChange}
-                placeholder="Dirección..."
-                required
-                className="mt-1 ml-5 w-md rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
-            />
-            <label className="w-md text-sm font-medium text-gray-700"><span style={styles}>*</span>Localidad</label>
-            <input
-                type="text"
-                name="localidad"
-                value={formData.localidad}
-                onChange={handleChange}
-                placeholder="Localidad..."
-                required
-                className="mt-1 ml-5 w-md rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
-            />
-            <label className="w-md text-sm font-medium text-gray-700"><span style={styles}>*</span>C.P.</label>
-            <input
-                type="number"
-                name="cp"
-                value={formData.cp}
-                onChange={handleChange}
-                placeholder="Código postal..."
-                required
-                className="mt-1 ml-5 w-small rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
-            />
-            </div>
-            <div>
-            <label className="w-md text-sm font-medium text-gray-700"><span style={styles}>*</span>Provincia</label>
-            <input
-                type="text"
-                name="provincia"
-                value={formData.provincia}
-                onChange={handleChange}
-                placeholder="Provincia..."
-                required
-                className="mt-1 ml-5 w-md rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
-            />
+            <Input type={"text"} name={"direccion"} formData={formData.direccion} method={handleChange}
+            placeholder={"Dirección..."} style={"mt-1 ml-5 w-md rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"} />
+            <label className="w-md text-sm font-medium text-gray-700"><span style={styles}>*</span>Localidad</label>            
+            <Input type={"text"} name={"localidad"} formData={formData.localidad} method={handleChange}
+            placeholder={"Localidad..."} style={"mt-1 ml-5 w-md rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"} />
+            <label className="w-md text-sm font-medium text-gray-700"><span style={styles}>*</span>C.P.</label>            
+            <Input type={"number"} name={"cp"} formData={formData.cp.toString()} method={handleChange}
+            placeholder={"Código postal..."} style={"mt-1 ml-5 w-small rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"} />
+        </div>
+        <div>
+            <label className="w-md text-sm font-medium text-gray-700"><span style={styles}>*</span>Provincia</label>            
+            <Input type={"text"} name={"provincia"} formData={formData.provincia} method={handleChange}
+            placeholder={"Provincia..."} style={"mt-1 ml-5 w-md rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"} />
             <label className="w-md text-sm font-medium text-gray-700"><span style={styles}>*</span>País</label>
-            <input
-                type="text"
-                name="pais"
-                value={formData.pais}
-                onChange={handleChange}
-                placeholder="País..."
-                required
-                className="mt-1 ml-5 w-md rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
-            />
+            <Input type={"text"} name={"pais"} formData={formData.pais} method={handleChange}
+            placeholder={"Pais..."} style={"mt-1 ml-5 w-md rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"} />
         </div>                
         <div>
             <label className="w-md text-sm font-medium text-gray-700">Teléfonos</label>            
-            <input
-                type="tel"
-                name="telefono1"
-                value={formData.telefono1}
-                placeholder="Primer teléfono..."
-                onChange={handleChange}
-                className="mt-1 ml-5 w-small rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
-            />
-            <input
-                type="tel"
-                name="telefono2"
-                value={formData.telefono2}
-                placeholder="Segundo teléfono..."
-                onChange={handleChange}
-                className="mt-1 ml-5 w-small rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
-            />
-            <label className="text-sm font-medium text-gray-700">Fax</label>
-            <input
-                type="tel"
-                name="fax"
-                value={formData.fax}
-                onChange={handleChange}
-                placeholder="Fax..."
-                className="mt-1 ml-5 w-small rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
-            />
+            <Input type={"tel"} name={"telefono1"} formData={formData.telefono1} method={handleChange}
+            placeholder={"Primer teléfono..."} style={"mt-1 ml-5 w-small rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"} />
+            <Input type={"tel"} name={"telefono2"} formData={formData.telefono2} method={handleChange}
+            placeholder={"Segundo teléfono..."} style={"mt-1 ml-5 w-small rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"} />
+            <label className="text-sm font-medium text-gray-700">Fax</label>            
+            <Input type={"tel"} name={"fax"} formData={formData.fax} method={handleChange}
+            placeholder={"Fax..."} style={"mt-1 ml-5 w-small rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"} />
         </div>        
         <div>
             <label className="text-sm font-medium text-gray-700">Email</label>
-            <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                placeholder="email..."
-                className="mt-1 ml-5 w-md rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
-            />
-            <label className="text-sm font-medium text-gray-700">Web</label>
-            <input
-                type="text"
-                name="web"
-                value={formData.web}
-                onChange={handleChange}
-                placeholder="Página web..."
-                className="mt-1 ml-5 w-md rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
-            />
+            <Input type={"email"} name={"email"} formData={formData.email} method={handleChange}
+            placeholder={"Email..."} style={"mt-1 ml-5 w-md rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"} />
+            <label className="text-sm font-medium text-gray-700">Web</label>            
+            <Input type={"text"} name={"web"} formData={formData.web} method={handleChange}
+            placeholder={"Página web..."} style={"mt-1 ml-5 w-md rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"} />
         </div>        
         <div>
-            <label className="text-sm font-medium text-gray-700">Contacto</label>
-            <input
-                type="text"
-                name="contacto"
-                value={formData.contacto}
-                onChange={handleChange}
-                placeholder="Persona de contacto..."
-                className="mt-1 ml-5 w-md rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
-            />
+            <label className="text-sm font-medium text-gray-700">Contacto</label>            
+            <Input type={"text"} name={"contacto"} formData={formData.contacto} method={handleChange}
+            placeholder={"Persona de contacto..."} style={"mt-1 ml-5 w-md rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"} />
         </div>
         <div>
-            <label className="text-sm font-medium text-gray-700">Fecha de alta:</label>
-            <input
-                type="text"
-                name="fechaAlta"
-                value={formData.fechaAlta}
-                onChange={handleChange}
-                placeholder="Fecha de alta..."
-                className="mt-1 ml-5 w-small rounded-md shadow-sm"
-            />
+            <label className="text-sm font-medium text-gray-700">Fecha de alta:</label>            
+            <Input type={"text"} name={"fechaAlta"} formData={formData.fechaAlta} method={handleChange}
+            placeholder={"Fecha de alta..."} style={"mt-1 ml-5 w-small rounded-md shadow-sm"} />
         </div>
-        <div className="botones">
-            <button
-                type="submit"
-                className="w-md bg-blue-600 text-white py-2 rounded-xl hover:bg-blue-700 transition-colors"
-            >
-                Guardar
-            </button>
-            <button
-                type="reset"
-                className="w-md bg-red-600 text-white py-2 rounded-xl hover:bg-red-700 transition-colors"
-                onClick={handleGoBack}
-            >
-                Volver
-            </button>
+        <div className="botones">            
+            <Button label="Guardar" style="w-20 bg-blue-600 text-white py-2 rounded-xl hover:bg-blue-700 transition-colors"
+            parentMethod={handleSubmit} />
+            <Button style="w-20 bg-red-600 text-white py-2 rounded-xl hover:bg-red-700 transition-colors" label="Volver"
+            parentMethod={handleGoBack} />
         </div>
       </form>
     </div>
