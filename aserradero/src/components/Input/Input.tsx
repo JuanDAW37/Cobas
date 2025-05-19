@@ -5,7 +5,7 @@ interface Input {
     formData:string,
     method:(e:React.ChangeEvent<HTMLInputElement>)=>void,
     placeholder:string,
-    style:string
+    style:string    
 }
 
 export const Input = ({type, name, formData, method, placeholder, style}:Input) => {
@@ -16,7 +16,7 @@ export const Input = ({type, name, formData, method, placeholder, style}:Input) 
                 value={formData}
                 onChange={method}
                 placeholder={placeholder}
-                className={style}
+                className={style}                
             />
     )
 }

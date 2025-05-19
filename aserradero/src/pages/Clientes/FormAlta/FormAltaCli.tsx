@@ -4,6 +4,7 @@ import {HelperHttp} from '../../../helpers/HelperHttp';
 import {Cliente} from '../../../Models/Cliente';
 import { Button } from "../../../components";
 import { Input } from "../../../components/Input/Input";
+import { Message } from "../../../components/Message/Message";
 
 export const FormAltaCli = () => {
     const styles = {
@@ -37,6 +38,8 @@ export const FormAltaCli = () => {
     const url = 'http://localhost:3001/api/clientes';
 
     const [formData, setFormData] = useState<Cliente>(initialData);
+    const [error, setError] = useState(false);
+    const [data, setData] = useState(false);
 
     const handleGoBack = () => {        
         navigate(-1);
@@ -47,9 +50,13 @@ export const FormAltaCli = () => {
         setFormData({ ...formData, [name]: value });
     }
 
-    const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>):void => {
+    const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>):void => {        
         e.preventDefault();
-        const data = {
+        if(!formData.nombreApellidos || !formData.nif || !formData.direccion || !formData.cp || !formData.provincia || !formData.pais){
+            setError(true)
+            return
+        }else{
+            const data = {
             nombreApellidos:formData.nombreApellidos,
             nif:formData.nif,
             direccion:formData.direccion,
@@ -64,8 +71,7 @@ export const FormAltaCli = () => {
             web:formData.web,
             contacto:formData.contacto,
             fechaAlta:formData.fechaAlta,            
-        }
-        console.log(data)
+        }        
         data.fechaAlta = `${data.fechaAlta.substring(6)}-${data.fechaAlta.substring(3,5)}-${data.fechaAlta.substring(0,2)}`;        
         const options = {
             method: 'POST',
@@ -78,6 +84,9 @@ export const FormAltaCli = () => {
                 setFormData(initialData);
             }
         });
+            setError(false);
+            setData(true);
+        }        
     }
 
     return (
@@ -145,6 +154,8 @@ export const FormAltaCli = () => {
             <Button style="w-20 bg-red-600 text-white py-2 rounded-xl hover:bg-red-700 transition-colors" label="Volver"
             parentMethod={handleGoBack} />
         </div>
+        {error && <Message message={'Faltan datos...'} bgColor={ '#C10007'} />}
+        {!error && data && <Message message={'Datos guardados...'} bgColor={ '#1447E6'} />}
       </form>
     </div>
     )
